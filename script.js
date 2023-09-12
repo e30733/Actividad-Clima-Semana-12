@@ -1,38 +1,38 @@
-const apiKey = '13081a48dbc7023ace6a3baf72658dc6'; // Reemplace con su clave de API
+const apiKey = '13081a48dbc7023ace6a3baf72658dc6';
 
-document.getElementById('getForecastBtn').addEventListener('click', getWeather);
+document.getElementById('obtenerClimaBtn').addEventListener('click', obtenerClima);
 
-async function getWeather() {
-    const locationInput = document.getElementById('locationInput').value;
+async function obtenerClima() {
+    const ubicacionInput = document.getElementById('ubicacionInput').value;
 
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationInput}&units=metric&appid=${apiKey}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ubicacionInput}&units=metric&appid=${apiKey}`);
         const data = await response.json();
 
         if (data.cod === '404') {
-            displayErrorMessage('Ubicación no encontrada');
+            mostrarError('Ubicación no encontrada');
         } else {
-            displayWeatherData(data);
+            mostrarDatosClima(data);
         }
     } catch (error) {
-        displayErrorMessage('Hubo un problema al obtener el pronóstico del tiempo');
+        mostrarError('No se pudo encontrar la información solicitada');
     }
 }
 
-function displayWeatherData(data) {
-    document.getElementById('location').textContent = data.name;
-    document.getElementById('temperature').textContent = data.main.temp;
-    document.getElementById('description').textContent = data.weather[0].description;
-    document.getElementById('humidity').textContent = data.main.humidity;
-    document.getElementById('windSpeed').textContent = data.wind.speed;
-    document.getElementById('errorMessage').textContent = '';
+function mostrarDatosClima(data) {
+    document.getElementById('ubicacion').textContent = data.name;
+    document.getElementById('temperatura').textContent = data.main.temp;
+    document.getElementById('descripcion').textContent = data.weather[0].descripcion;
+    document.getElementById('humedad').textContent = data.main.humedad;
+    document.getElementById('velocidadViento').textContent = data.wind.speed;
+    document.getElementById('error').textContent = '';
 }
 
-function displayErrorMessage(message) {
-    document.getElementById('errorMessage').textContent = message;
-    document.getElementById('location').textContent = '';
-    document.getElementById('temperature').textContent = '';
-    document.getElementById('description').textContent = '';
-    document.getElementById('humidity').textContent = '';
-    document.getElementById('windSpeed').textContent = '';
+function mostrarError(message) {
+    document.getElementById('error').textContent = message;
+    document.getElementById('ubicacion').textContent = '';
+    document.getElementById('temperatura').textContent = '';
+    document.getElementById('descripcion').textContent = '';
+    document.getElementById('humedad').textContent = '';
+    document.getElementById('velocidadViento').textContent = '';
 }
