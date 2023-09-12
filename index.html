@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Forecast</h1>
+        <input type="text" id="locationInput" placeholder="Ingrese una ubicación">
+        <button id="getForecastBtn">Obtener Pronóstico</button>
+        <div id="weatherInfo">
+            <p><strong>Ubicación:</strong> <span id="location"></span></p>
+            <p><strong>Temperatura:</strong> <span id="temperature"></span>°C</p>
+            <p><strong>Descripción:</strong> <span id="description"></span></p>
+            <p><strong>Humedad:</strong> <span id="humidity"></span>%</p>
+            <p><strong>Velocidad del Viento:</strong> <span id="windSpeed"></span> m/s</p>
+        </div>
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
